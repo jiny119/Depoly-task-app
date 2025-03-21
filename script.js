@@ -12,9 +12,13 @@ function watchAd() {
 
 function playGame() {
     let games = [
-        "https://example.com/game1",
-        "https://example.com/game2",
-        "https://example.com/game3"
+        "https://www.crazygames.com/t/bike",
+        "https://www.poki.com/en/g/rally-champion",
+        "https://www.miniclip.com/games/basketball-stars/en/",
+        "https://www.y8.com/games/moto_x3m",
+        "https://www.crazygames.com/game/real-city-driving-2",
+        "https://www.poki.com/en/g/bullet-force",
+        "https://www.y8.com/games/super_star_car"
     ];
     let randomGame = games[Math.floor(Math.random() * games.length)];
     window.open(randomGame, "_blank");
