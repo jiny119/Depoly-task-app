@@ -1,20 +1,14 @@
 body {
-    background-color: #121212; /* Dark Theme */
-    color: white;
     font-family: Arial, sans-serif;
     text-align: center;
 }
 
-button {
-    background-color: #ff9800; /* Orange Theme */
-    color: white;
-    padding: 10px;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-    margin: 5px;
+.menu {
+    margin-top: 20px;
 }
 
-button:hover {
-    background-color: #e68900; /* Darker Orange */
+button {
+    margin: 10px;
+    padding: 10px;
+    font-size: 16px;
 }
