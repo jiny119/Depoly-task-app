@@ -1,63 +1,96 @@
-let coins = 0;
+let balance = localStorage.getItem("balance") ? parseInt(localStorage.getItem("balance")) : 0;
+let referrals = localStorage.getItem("referrals") ? parseInt(localStorage.getItem("referrals")) : 0;
+let clicks = localStorage.getItem("clicks") ? parseInt(localStorage.getItem("clicks")) : 0;
+let withdrawalStatus = localStorage.getItem("withdrawalStatus") || "None";
 
-function updateCoins() {
-    document.getElementById("coins").innerText = coins;
+document.getElementById("balance").innerText = balance;
+document.getElementById("withdrawal-status").innerText = "Withdrawal Status: " + withdrawalStatus;
+
+function earnCoins(amount) {
+    balance += amount;
+    localStorage.setItem("balance", balance);
+    document.getElementById("balance").innerText = balance;
+    alert("You earned " + amount + " coins!");
+}
+
+function increaseClicks() {
+    clicks += 1;
+    localStorage.setItem("clicks", clicks);
 }
 
 function watchAd() {
-    alert("Ad watched! You earned 5 coins.");
-    coins += 5;
-    updateCoins();
+    window.open("https://www.youradurl.com", "_blank");
+    earnCoins(5);
+    increaseClicks();
 }
 
 function playGame() {
-    let games = [
-        "https://www.crazygames.com/t/bike",
-        "https://www.poki.com/en/g/rally-champion",
-        "https://www.miniclip.com/games/basketball-stars/en/",
-        "https://www.y8.com/games/moto_x3m",
-        "https://www.crazygames.com/game/real-city-driving-2",
-        "https://www.poki.com/en/g/bullet-force",
-        "https://www.y8.com/games/super_star_car"
-    ];
-    let randomGame = games[Math.floor(Math.random() * games.length)];
-    window.open(randomGame, "_blank");
-    alert("Game played! You earned 5 coins.");
-    coins += 5;
-    updateCoins();
-}
-
-function completeSurvey() {
-    let surveys = [
-        "https://youtube.com/yourchannel",
-        "https://youtu.be/NZ-mcJyqdBs",
-        "https://yourbloggerlink.com"
-    ];
-    let randomSurvey = surveys[Math.floor(Math.random() * surveys.length)];
-    window.open(randomSurvey, "_blank");
-    alert("Survey completed! You earned 5 coins.");
-    coins += 5;
-    updateCoins();
+    window.open("https://www.yourgameurl.com", "_blank");
+    earnCoins(5);
+    increaseClicks();
 }
 
 function installApp() {
-    alert("App installed! You earned 5 coins.");
-    coins += 5;
-    updateCoins();
+    window.open("https://www.yourappurl.com", "_blank");
+    earnCoins(5);
+    increaseClicks();
 }
 
-function withdraw() {
-    if (coins >= 15000) {
-        alert("Withdrawal request sent! Processing within 48 hours.");
-    } else {
-        alert("You need at least 15,000 coins to withdraw!");
+function completeSurvey() {
+    let confirmSubscribe = confirm("Please subscribe to our YouTube channel before continuing!");
+    if (confirmSubscribe) {
+        window.open("https://www.youtube.com/@ToonCraftStudio-f7o", "_blank");
+        earnCoins(5);
+        increaseClicks();
     }
 }
 
-function logout() {
-    alert("You have been logged out!");
+function withdraw() {
+    if (balance >= 15000) {
+        if (referrals >= 10 && clicks >= 5) {
+            let method = prompt("Choose Withdrawal Method: JazzCash, EasyPaisa, Payoneer, PayPal");
+            if (method) {
+                alert("Withdrawal Request Submitted. Waiting for Approval.");
+                withdrawalStatus = "Pending";
+                localStorage.setItem("withdrawalStatus", withdrawalStatus);
+                document.getElementById("withdrawal-status").innerText = "Withdrawal Status: " + withdrawalStatus;
+            }
+        } else {
+            alert("You need at least 10 referrals and 5 clicks to withdraw!");
+        }
+    } else {
+        alert("You need at least 15000 coins to withdraw!");
+    }
 }
 
-function openPage(page) {
-    window.location.href = page;
+function approveWithdrawal() {
+    if (withdrawalStatus === "Pending") {
+        alert("Withdrawal Approved! Coins Deducted.");
+        balance -= 15000;
+        localStorage.setItem("balance", balance);
+        document.getElementById("balance").innerText = balance;
+        withdrawalStatus = "Approved";
+        localStorage.setItem("withdrawalStatus", withdrawalStatus);
+        document.getElementById("withdrawal-status").innerText = "Withdrawal Status: " + withdrawalStatus;
+    } else {
+        alert("No pending withdrawal request!");
+    }
+}
+
+function openSettings() {
+    window.location.href = "settings.html";
+}
+
+function changeTheme() {
+    alert("Theme Changed!");
+}
+
+function toggleSound() {
+    alert("Sound Toggled!");
+}
+
+function logout() {
+    localStorage.clear();
+    alert("Logged out!");
+    window.location.href = "index.html";
 }
