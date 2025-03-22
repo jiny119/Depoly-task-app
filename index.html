@@ -3,24 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My WebApp</title>
+    <title>PyperTask WebApp</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <h1>Welcome to PyperTask</h1>
 
-    <h1>Welcome to My WebApp</h1>
-    
+    <h3>Your Balance: <span id="balance">0</span> Coins</h3>
+    <h3 id="withdrawal-status">Withdrawal Status: None</h3>
+
     <div class="menu">
         <button onclick="openSettings()">Settings</button>
         <button onclick="watchAd()">Watch Ad (5 Coins)</button>
         <button onclick="playGame()">Play Game (5 Coins)</button>
-        <button onclick="installApp()">Install App (5 Coins)</button>
         <button onclick="completeSurvey()">Complete Survey (5 Coins)</button>
         <button onclick="withdraw()">Withdraw</button>
     </div>
-
-    <h3>Your Balance: <span id="balance">0</span> Coins</h3>
-    <h3 id="withdrawal-status">Withdrawal Status: None</h3>
 
     <script src="script.js"></script>
 </body>
