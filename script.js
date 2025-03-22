@@ -1,39 +1,16 @@
-let balance = localStorage.getItem("balance") ? parseInt(localStorage.getItem("balance")) : 0;
-document.getElementById("balance").innerText = balance;
+document.getElementById("gameButton").addEventListener("click", function () {
+    window.location.href = "https://www.gamemonetize.com"; // Game earning URL
+});
 
-function updateBalance(amount) {
-    balance += amount;
-    localStorage.setItem("balance", balance);
-    document.getElementById("balance").innerText = balance;
-}
+document.getElementById("appButton").addEventListener("click", function () {
+    window.location.href = "https://www.admitad.com"; // App install earning URL
+});
 
-function watchAd() {
-    window.open("https://www.youradurl.com", "_blank");
-    alert("Ad watched! You earned 5 coins.");
-    updateBalance(5);
-}
+document.getElementById("surveyButton").addEventListener("click", function () {
+    window.location.href = "https://www.youtube.com/@ToonCraftStudio-f7o"; // YouTube Channel Survey
+});
 
-function playGame() {
-    window.open("https://www.yourgameurl.com", "_blank");
-    alert("Game played! You earned 5 coins.");
-    updateBalance(5);
-}
-
-function completeSurvey() {
-    window.open("https://www.youtube.com/@yourchannel", "_blank");
-    alert("Subscribe to the channel and take a screenshot for verification.");
-}
-
-function withdraw() {
-    if (balance >= 15000) {
-        alert("Withdrawal request sent. Processing...");
-        document.getElementById("withdrawal-status").innerText = "Pending";
-        localStorage.setItem("withdrawalStatus", "Pending");
-    } else {
-        alert("You need at least 15,000 coins to withdraw.");
-    }
-}
-
-function openSettings() {
-    window.location.href = "settings.html";
-}
+// Ads Watch System
+document.getElementById("adsButton").addEventListener("click", function () {
+    window.open("https://www.propellerads.com", "_blank"); // Ads earning URL
+});
