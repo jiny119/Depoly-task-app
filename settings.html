@@ -7,13 +7,17 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
     <h1>Settings</h1>
-    <p>Change app settings here.</p>
-    <button onclick="goBack()">Back</button>
+    <button onclick="changeTheme()">Change Theme</button>
+    <button onclick="toggleSound()">Toggle Sound</button>
+    <button onclick="logout()">Logout</button>
+    <button onclick="approveWithdrawal()">Approve Withdrawal</button>
+    <button onclick="goBack()">Go Back</button>
 
     <script>
         function goBack() {
-            window.history.back();
+            window.location.href = "index.html";
         }
     </script>
 </body>
